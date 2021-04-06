@@ -9,3 +9,4 @@ export class RecipeModel {
     this.imagePath = imagePath
   }
 }
+
