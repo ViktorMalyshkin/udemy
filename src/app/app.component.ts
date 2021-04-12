@@ -6,7 +6,7 @@ import { Component } from '@angular/core'
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'project'
+  title = 'udemy-prj-basics'
   loadedFeature = 'recipe'
 
   onNavigate(feature: string): void {
