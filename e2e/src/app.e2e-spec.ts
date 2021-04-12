@@ -1,7 +1,7 @@
 import { browser, logging } from 'protractor';
 import { AppPage } from './app.po';
 
-describe('workspace-udemy-prj-basics App', () => {
+describe('workspace-udemy-course-project App', () => {
   let page: AppPage;
 
   beforeEach(() => {
@@ -10,7 +10,7 @@ describe('workspace-udemy-prj-basics App', () => {
 
   it('should display welcome message', async () => {
     await page.navigateTo();
-    expect(await page.getTitleText()).toEqual('udemy-prj-basics app is running!');
+    expect(await page.getTitleText()).toEqual('udemy-course-project app is running!');
   });
 
   afterEach(async () => {
