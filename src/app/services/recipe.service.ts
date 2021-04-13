@@ -1,21 +1,41 @@
-import {EventEmitter} from '@angular/core'
+import {EventEmitter, Injectable} from '@angular/core'
 import {RecipeModel} from '../recipes/recipe.model'
-//
-// @Injectable({
-//   providedIn: 'root',
-// })
+import {IngredientModel} from "../shared/ingredient.model";
+import {ShoppingListService} from "./shopping-list.service";
+
+@Injectable({
+  providedIn: 'root',
+})
 export class RecipeService {
   recipeSelected = new EventEmitter<RecipeModel>()
 
   private recipes: RecipeModel[] = [
-    new RecipeModel('A Test Recipe', 'This is simply a test', 'https://static.onecms.io/wp-content/uploads/sites/9/2020/03/19/birria-tacos-FT-RECIPE0420-1.jpg'),
-    new RecipeModel('Another Test Recipe', 'This is simply a test', 'https://static.onecms.io/wp-content/uploads/sites/9/2020/03/19/birria-tacos-FT-RECIPE0420-1.jpg'),
+    new RecipeModel(
+      'Tasty Schnizel',
+      'A super-tasty Schnizel - just awesome!',
+      'https://upload.wikimedia.org/wikipedia/commons/7/72/Schnitzel.JPG',
+      [
+        new IngredientModel('Meat', 1),
+        new IngredientModel('French Fries', 20),
+      ]),
+    new RecipeModel(
+      'Big Fat Burger',
+      'What else you need to say?',
+      'https://upload.wikimedia.org/wikipedia/commons/b/be/Burger_King_Angus_Bacon_%26_Cheese_Steak_Burger.jpg',
+      [
+        new IngredientModel('Buns', 2),
+        new IngredientModel('Meat', 1),
+      ]),
   ]
 
-  constructor() {
+  constructor(private shoppingListService: ShoppingListService) {
   }
 
   getRecipes() {
     return this.recipes.slice()
+  }
+
+  addIngredientsToShoppingList(ingredients: IngredientModel[]) {
+    this.shoppingListService.addIngredients(ingredients)
   }
 }
