@@ -1,4 +1,4 @@
-import {EventEmitter, Injectable} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {IngredientModel} from "../shared/ingredient.model";
 import {Subject} from "rxjs";
 
@@ -14,11 +14,14 @@ export class ShoppingListService {
   ]
 
 
+  constructor() {
+  }
+
   getIngredients(): IngredientModel[] {
     return this.ingredients.slice();
   }
 
-  getIngridient(index: number){
+  getIngredient(index: number) {
     return this.ingredients[index]
   }
 
@@ -27,7 +30,7 @@ export class ShoppingListService {
     this.ingredientsChanged.next(this.ingredients.slice())
   }
 
-  addIngredients(ingredients: IngredientModel[]){
+  addIngredients(ingredients: IngredientModel[]) {
     // for (let ingredient of ingredients){
     //   this.addIngredient(ingredient)
     // }
@@ -35,6 +38,8 @@ export class ShoppingListService {
     this.ingredientsChanged.next(this.ingredients.slice())
   }
 
-  constructor() {
+  updateIngredient(index: number, newIngredient) {
+    this.ingredients[index] = newIngredient
+    this.ingredientsChanged.next(this.ingredients.slice())
   }
 }
