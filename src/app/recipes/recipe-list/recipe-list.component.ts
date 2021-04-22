@@ -1,5 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core'
-import { RecipeModel } from '../recipe.model'
+import {Component, OnInit} from '@angular/core'
+import {RecipeModel} from '../recipe.model'
 import {RecipeService} from "../../services/recipe.service";
 import {ActivatedRoute, Router} from "@angular/router";
 
@@ -11,9 +11,13 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class RecipeListComponent implements OnInit {
   recipes: RecipeModel[]
 
-  constructor(private recipeService: RecipeService, private router: Router, private route: ActivatedRoute) {}
+  constructor(private recipeService: RecipeService, private router: Router, private route: ActivatedRoute) {
+  }
 
   ngOnInit(): void {
+    this.recipeService.recipeChanged.subscribe((recipes: RecipeModel[]) => {
+      this.recipes = recipes
+    })
     this.recipes = this.recipeService.getRecipes()
   }
 
