@@ -5,6 +5,7 @@
 ## Section 10: Course Project - Services & Dependency Injection
 ## Section 12: Course Project - Routing
 ## Section 14: Course Project - Observables
+## Section 16: Course Project - Forms
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.7.
 
