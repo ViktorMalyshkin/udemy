@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {RecipeService} from "../services/recipe.service";
 import {RecipeModel} from "../recipes/recipe.model";
-import {map} from "rxjs/operators";
+import {map, tap} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -22,17 +22,17 @@ export class DataStorageService {
   }
 
   fetchRecipes() {
-    this.http.get<RecipeModel[]>('https://udemy-course-recipe-book-4a524-default-rtdb.firebaseio.com/recipes.json')
+    return this.http.get<RecipeModel[]>('https://udemy-course-recipe-book-4a524-default-rtdb.firebaseio.com/recipes.json')
       .pipe(
         map((recipes) => {
           return recipes.map(recipe => {
             return {...recipe, ingredients: recipe.ingredients ? recipe.ingredients : []}
           })
+        }),
+        tap(recipes => {
+          this.recipeService.setRecipes(recipes)
         })
       )
-      .subscribe((recipes) => {
-        this.recipeService.setRecipes(recipes)
-      })
   }
 
 }
