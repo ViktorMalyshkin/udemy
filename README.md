@@ -2,6 +2,12 @@
 ## Section 3: Course Project - The Basics
 ## Section 6: Course Project - Components & Databinding
 ## Section 8: Course Project - Directives
+## Section 10: Course Project - Services & Dependency Injection
+## Section 12: Course Project - Routing
+## Section 14: Course Project - Observables
+## Section 16: Course Project - Forms
+## Section 19: Course Project - Http
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.7.
 
 ## Development server
