@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {RecipeModel} from "../recipes/recipe.model";
 import {RecipeService} from "../services/recipe.service";
+import {RecipeModel} from "../recipes/recipe.model";
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +18,13 @@ export class DataStorageService {
         console.log(response)
       }
     )
+  }
+
+  fetchRecipes() {
+    this.http.get<RecipeModel[]>('https://udemy-course-recipe-book-4a524-default-rtdb.firebaseio.com/recipes.json')
+      .subscribe((recipes)=>{
+        this.recipeService.setRecipes(recipes)
+    })
   }
 
 }
