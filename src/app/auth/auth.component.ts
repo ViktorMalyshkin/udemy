@@ -36,9 +36,9 @@ export class AuthComponent implements OnInit {
       this.authService.signup(email, password).subscribe(resData => {
         console.log('resData', resData)
         this.isLoading = false
-      }, error => {
-        console.log('eeeeee', error)
-        this.error = 'An error occirred!'
+      }, errorMessage => {
+        console.log('errorMessage', errorMessage)
+        this.error = errorMessage
         this.isLoading = false
       })
     }
