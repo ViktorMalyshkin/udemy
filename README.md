@@ -9,6 +9,7 @@
 ## Section 19: Course Project - Http
 ## Section 20: Authentication & Route Protection in Angular
 ## Section 21: Dynamic Components
+## Section 22. Angular Modules & Optimizing Angular Apps
 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.7.
