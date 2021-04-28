@@ -4,6 +4,7 @@ import {catchError, tap} from "rxjs/operators";
 import {BehaviorSubject, throwError} from "rxjs";
 import {User} from "./user.model";
 import {Router} from "@angular/router";
+import {environment} from "../../environments/environment";
 
 export interface AuthResponseData {
   idToken: string;
@@ -18,7 +19,6 @@ export interface AuthResponseData {
   providedIn: 'root'
 })
 export class AuthService {
-  WEB_API_KEY = 'AIzaSyD8a-F7_cXQOFagf3Hd1Wj2mr6bvZREzqk'
   user = new BehaviorSubject<User>(null)
   private tokenExpirationTimer: any
 
@@ -27,7 +27,7 @@ export class AuthService {
   }
 
   signup(email: string, password: string) {
-    return this.http.post<AuthResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' + this.WEB_API_KEY,
+    return this.http.post<AuthResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' + environment.firebaseAPIKey,
       {email: email, password: password, returnSecureToken: true})
       .pipe(
         catchError(this.handleError),
@@ -38,7 +38,7 @@ export class AuthService {
   }
 
   login(email: string, password: string) {
-    return this.http.post<AuthResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=' + this.WEB_API_KEY,
+    return this.http.post<AuthResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=' + environment.firebaseAPIKey,
       {email: email, password: password, returnSecureToken: true})
       .pipe(
         catchError(this.handleError),
