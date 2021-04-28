@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {AbstractControl, FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
-import {RecipeService} from "../../services/recipe.service";
+import {RecipeService} from "../recipe.service";
 import {RecipeModel} from "../recipe.model";
 
 @Component({
