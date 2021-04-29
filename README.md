@@ -1,4 +1,4 @@
-# Udemy - PrjBasics
+# Udemy - Course Project
 ## Section 3: Course Project - The Basics
 ## Section 6: Course Project - Components & Databinding
 ## Section 8: Course Project - Directives
