@@ -4,6 +4,7 @@ import {catchError, map, switchMap} from "rxjs/operators";
 import {environment} from "../../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {of} from "rxjs";
+import {Injectable} from "@angular/core";
 
 export interface AuthResponseData {
   idToken: string;
@@ -14,6 +15,7 @@ export interface AuthResponseData {
   registered?: boolean
 }
 
+@Injectable()
 export class AuthEffects {
   @Effect() authLogin = this.actions$.pipe(
     ofType(AuthActions.LOGIN_START),
@@ -26,12 +28,19 @@ export class AuthEffects {
           password: authData.payload.password,
           returnSecureToken: true
         }).pipe(
-        catchError(error => {
-          of()
-        }),
         map(resData => {
-          of()
-        })
+          const expirationDate = new Date(new Date().getTime() + +resData.expiresIn * 1000);
+
+          return of(new AuthActions.Login({
+            email: resData.email,
+            userId: resData.localId,
+            token: resData.idToken,
+            expirationDate
+          }))
+        }),
+        catchError(error => {
+          return of()
+        }),
       )
     })
   )
