@@ -122,7 +122,6 @@ export class AuthEffects {
         return {type: 'DUMMY'};
       }
 
-
       const loadedUser = new User(
         userData.email,
         userData.id,
