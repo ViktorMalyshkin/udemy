@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {Store} from "@ngrx/store";
+import {map, tap} from "rxjs/operators";
 import {RecipeService} from "../recipes/recipe.service";
 import {RecipeModel} from "../recipes/recipe.model";
-import {map, tap} from "rxjs/operators";
 import * as fromApp from '../store/app.reducer'
-import {Store} from "@ngrx/store";
 import * as RecipesActions from '../recipes/store/recipe.actions'
 
 @Injectable({
@@ -25,7 +25,6 @@ export class DataStorageService {
   }
 
   fetchRecipes() {
-
     return this.http.get<RecipeModel[]>('https://udemy-course-recipe-book-4a524-default-rtdb.firebaseio.com/recipes.json')
       .pipe(
         map((recipes) => {
