@@ -1,7 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {AbstractControl, FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
-import {RecipeService} from "../recipe.service";
 import * as fromApp from '../../store/app.reducer'
 import {Store} from "@ngrx/store";
 import {map} from "rxjs/operators";
@@ -21,7 +20,6 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
-    private recipeService: RecipeService,
     private router: Router,
     private store: Store<fromApp.AppState>
   ) {
@@ -116,8 +114,8 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if(this.storeSub){
-    this.storeSub.unsubscribe()
+    if (this.storeSub) {
+      this.storeSub.unsubscribe()
     }
   }
 }
