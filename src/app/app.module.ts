@@ -7,12 +7,12 @@ import {AppRoutingModule} from "./app-routing.module";
 import {HttpClientModule} from "@angular/common/http";
 import {SharedModule} from "./shared/shared.module";
 import {CoreModule} from "./core.module";
-import {LoggingService} from "./logging.service";
 import {StoreModule} from "@ngrx/store";
-import {shoppingListReducer} from "./shopping-list/store/shopping-list.reducer";
 import * as fromApp from "./store/app.reducer";
 import {EffectsModule} from "@ngrx/effects";
 import {AuthEffects} from "./auth/store/auth.effects";
+import {StoreDevtoolsModule} from "@ngrx/store-devtools";
+import {environment} from "../environments/environment";
 
 @NgModule({
   declarations: [
@@ -25,6 +25,7 @@ import {AuthEffects} from "./auth/store/auth.effects";
     AppRoutingModule,
     StoreModule.forRoot(fromApp.appReducer),
     EffectsModule.forRoot([AuthEffects]),
+    StoreDevtoolsModule.instrument({logOnly: environment.production }),
     SharedModule,
     CoreModule
   ],
