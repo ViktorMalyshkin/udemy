@@ -31,6 +31,7 @@ export class RecipeDetailComponent implements OnInit {
           return +params['id']
         }),
         switchMap(id => {
+          this.id = id;
           return this.store.select('recipes')
         }),
         map(recipesState => {
