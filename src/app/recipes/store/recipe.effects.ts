@@ -32,7 +32,7 @@ export class RecipeEffects {
     ofType(RecipesActions.STORE_RECIPE),
     withLatestFrom(this.store.select('recipes')),
     switchMap(([actionData, recipesState]) => {
-      return this.http.put('https://udemy-course-recipe-book-4a524-default-rtdb.firebaseio.com/recipes.json', recipesState)
+      return this.http.put('https://udemy-course-recipe-book-4a524-default-rtdb.firebaseio.com/recipes.json', recipesState.recipes)
     })
   )
 
