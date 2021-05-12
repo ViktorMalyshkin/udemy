@@ -9,6 +9,8 @@ password: qweqwe
 
 > `Attention!!!` Please do not touch the `"Manage" > "Save Data"` button because the database will be updated and will save all the updates you made in the application!
 
+![Application Snapshot](https://github.com/ViktorMalyshkin/udemy-course-project/blob/master/README/img/screen-recipe-book.png)
+
 - MyFirstApp: - [udemy-my-first-app](https://github.com/ViktorMalyshkin/udemy-my-first-app)
     - Section 1: Getting Started
     - Section 2: The Basics
